@@ -42,6 +42,9 @@ Resources:
           Cpu: !FindInMap [TaskSize, {{service_instance.task_size}}, cpu]
           Memory: !FindInMap [TaskSize, {{service_instance.task_size}}, memory]
           Image: '{{service_instance.image}}'
+          Secrets:
+            - Name: jasypt.encryptor.password
+              ValueFrom: zuorajaspytpwd
           PortMappings:
             - ContainerPort: '{{service_instance.port}}'
           LogConfiguration:
